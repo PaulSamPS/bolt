@@ -16,10 +16,9 @@ interface SidebarProps {
   isCollapsed: boolean;
   currentPage: string;
   onPageChange: (page: string) => void;
-  onToggleCollapse: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed, currentPage, onPageChange, onToggleCollapse }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed, currentPage, onPageChange }) => {
   const menuItems = [
     { id: 'home', label: 'Главная', icon: Home },
     { id: 'tours', label: 'Туры', icon: Map },
@@ -49,20 +48,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed, currentPage, onP
                 </div>
               )}
             </div>
-          </div>
-          
-          {/* Collapse Toggle Button */}
-          <div className="hidden lg:flex justify-end px-2 mt-4">
-            <button
-              onClick={onToggleCollapse}
-              className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
-            >
-              {isCollapsed ? (
-                <ChevronRight className="h-4 w-4" />
-              ) : (
-                <ChevronLeft className="h-4 w-4" />
-              )}
-            </button>
           </div>
           
           <nav className="mt-8 flex-1 px-2 space-y-1">

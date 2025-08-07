@@ -15,6 +15,16 @@ const AppContent: React.FC = () => {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const { user } = useAuth();
 
+  const handleMenuToggle = () => {
+    if (window.innerWidth >= 1024) {
+      // На десктопе переключаем сворачивание
+      setSidebarCollapsed(!sidebarCollapsed);
+    } else {
+      // На мобильных устройствах переключаем видимость
+      setSidebarOpen(!sidebarOpen);
+    }
+  };
+
   const handlePageChange = (page: string) => {
     if (page === 'auth') {
       setShowAuthForm(true);
@@ -100,9 +110,10 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header
-        onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
+        onMenuToggle={handleMenuToggle}
         currentPage={currentPage}
         onPageChange={handlePageChange}
+        sidebarCollapsed={sidebarCollapsed}
       />
       
       <div className="flex">
@@ -111,7 +122,6 @@ const AppContent: React.FC = () => {
           isCollapsed={sidebarCollapsed}
           currentPage={currentPage}
           onPageChange={handlePageChange}
-          onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
         />
         
         <main className={`flex-1 ${sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64'} p-6 transition-all duration-300`}>

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Menu, Search, User, Bell, Plus, LogOut } from 'lucide-react';
+import { Menu, X, Search, User, Bell, Plus, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 interface HeaderProps {
   onMenuToggle: () => void;
   currentPage: string;
   onPageChange: (page: string) => void;
+  sidebarCollapsed?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuToggle, currentPage, onPageChange }) => {
+const Header: React.FC<HeaderProps> = ({ onMenuToggle, currentPage, onPageChange, sidebarCollapsed }) => {
   const { user, logout } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -20,8 +21,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, currentPage, onPageChange
             <button
               onClick={onMenuToggle}
               className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              title={sidebarCollapsed ? "Развернуть меню" : "Свернуть меню"}
             >
-              <Menu className="h-6 w-6" />
+              {sidebarCollapsed ? <Menu className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
             <div className="ml-4">
               <h1 className="text-xl font-bold text-gray-900">TravelMate</h1>
