@@ -33,6 +33,10 @@ const TourCard: React.FC<TourCardProps> = ({ tour, onTourClick }) => {
           src={tour.images[0]}
           alt={tour.title}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800';
+          }}
         />
         <div className="absolute top-3 right-3">
           <button className="p-2 bg-white rounded-full shadow-sm hover:bg-gray-50 transition-colors">

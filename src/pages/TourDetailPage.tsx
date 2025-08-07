@@ -50,7 +50,7 @@ const TourDetailPage: React.FC<TourDetailPageProps> = ({ tour, onBack }) => {
       id: '1',
       name: 'Анна Петрова',
       email: 'anna@example.com',
-      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
       rating: 4.8,
       reviewsCount: 23,
       location: 'Москва',
@@ -61,7 +61,7 @@ const TourDetailPage: React.FC<TourDetailPageProps> = ({ tour, onBack }) => {
       id: '2',
       name: 'Михаил Иванов',
       email: 'michael@example.com',
-      avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+      avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150',
       rating: 4.6,
       reviewsCount: 18,
       location: 'Санкт-Петербург',
@@ -114,6 +114,10 @@ const TourDetailPage: React.FC<TourDetailPageProps> = ({ tour, onBack }) => {
             src={tour.images[activeImageIndex]}
             alt={tour.title}
             className="w-full h-full object-cover rounded-xl"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = 'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800';
+            }}
           />
         </div>
         <div className="hidden lg:flex flex-col gap-4">
@@ -124,6 +128,10 @@ const TourDetailPage: React.FC<TourDetailPageProps> = ({ tour, onBack }) => {
               alt={`${tour.title} ${index + 2}`}
               onClick={() => setActiveImageIndex(index + 1)}
               className="w-full h-full object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = 'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800';
+              }}
             />
           ))}
         </div>

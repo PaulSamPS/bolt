@@ -9,6 +9,7 @@ import { Tour } from './types';
 
 const AppContent: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [showAuthForm, setShowAuthForm] = useState(false);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
@@ -107,11 +108,13 @@ const AppContent: React.FC = () => {
       <div className="flex">
         <Sidebar
           isOpen={sidebarOpen}
+          isCollapsed={sidebarCollapsed}
           currentPage={currentPage}
           onPageChange={handlePageChange}
+          onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
         />
         
-        <main className="flex-1 lg:ml-64 p-6">
+        <main className={`flex-1 ${sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64'} p-6 transition-all duration-300`}>
           <div className="max-w-7xl mx-auto">
             {renderCurrentPage()}
           </div>

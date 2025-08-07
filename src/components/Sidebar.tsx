@@ -6,17 +6,20 @@ import {
   MessageCircle, 
   Settings, 
   Star,
-  Filter,
-  Calendar
+  Calendar,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 interface SidebarProps {
   isOpen: boolean;
+  isCollapsed: boolean;
   currentPage: string;
   onPageChange: (page: string) => void;
+  onToggleCollapse: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, currentPage, onPageChange }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed, currentPage, onPageChange, onToggleCollapse }) => {
   const menuItems = [
     { id: 'home', label: 'Главная', icon: Home },
     { id: 'tours', label: 'Туры', icon: Map },
@@ -28,22 +31,38 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, currentPage, onPageChange }) 
   ];
 
   return (
-    <aside className={`fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+    <aside className={`fixed inset-y-0 left-0 z-30 ${isCollapsed ? 'w-16' : 'w-64'} bg-white shadow-lg transform transition-all duration-300 ease-in-out ${
       isOpen ? 'translate-x-0' : '-translate-x-full'
     } lg:translate-x-0 lg:static lg:inset-0`}>
       <div className="flex flex-col h-full">
         <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-          <div className="flex items-center flex-shrink-0 px-4">
+          <div className={`flex items-center flex-shrink-0 px-4 ${isCollapsed ? 'justify-center' : ''}`}>
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="h-8 w-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
                   <Map className="h-5 w-5 text-white" />
                 </div>
               </div>
-              <div className="ml-3">
+              {!isCollapsed && (
+                <div className="ml-3">
                 <p className="text-sm font-medium text-gray-700">TravelMate</p>
-              </div>
+                </div>
+              )}
             </div>
+          </div>
+          
+          {/* Collapse Toggle Button */}
+          <div className="hidden lg:flex justify-end px-2 mt-4">
+            <button
+              onClick={onToggleCollapse}
+              className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+            >
+              {isCollapsed ? (
+                <ChevronRight className="h-4 w-4" />
+              ) : (
+                <ChevronLeft className="h-4 w-4" />
+              )}
+            </button>
           </div>
           
           <nav className="mt-8 flex-1 px-2 space-y-1">
@@ -57,12 +76,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, currentPage, onPageChange }) 
                     currentPage === item.id
                       ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                  }`}
+                  } ${isCollapsed ? 'justify-center' : ''}`}
+                  title={isCollapsed ? item.label : ''}
                 >
                   <Icon className={`mr-3 h-5 w-5 ${
                     currentPage === item.id ? 'text-blue-500' : 'text-gray-400'
-                  }`} />
-                  {item.label}
+                  } ${isCollapsed ? 'mr-0' : ''}`} />
+                  {!isCollapsed && item.label}
                 </button>
               );
             })}

@@ -5,7 +5,7 @@ export const mockUsers: User[] = [
     id: '1',
     name: 'Анна Петрова',
     email: 'anna@example.com',
-    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
     rating: 4.8,
     reviewsCount: 23,
     bio: 'Люблю путешествовать по горам и открывать новые места',
@@ -17,7 +17,7 @@ export const mockUsers: User[] = [
     id: '2',
     name: 'Дмитрий Сидоров',
     email: 'dmitry@example.com',
-    avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+    avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150',
     rating: 4.6,
     reviewsCount: 18,
     bio: 'Опытный путешественник и фотограф',
@@ -41,8 +41,8 @@ export const mockTours: Tour[] = [
     currentParticipants: 4,
     organizer: mockUsers[0],
     images: [
-      'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      'https://images.pexels.com/photos/1578662/pexels-photo-1578662.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+      'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/1578662/pexels-photo-1578662.jpeg?auto=compress&cs=tinysrgb&w=800'
     ],
     tags: ['природа', 'пешие походы', 'озера', 'водопады'],
     difficulty: 'medium',
@@ -64,8 +64,8 @@ export const mockTours: Tour[] = [
     currentParticipants: 7,
     organizer: mockUsers[1],
     images: [
-      'https://images.pexels.com/photos/1562058/pexels-photo-1562058.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      'https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+      'https://images.pexels.com/photos/1562058/pexels-photo-1562058.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=800'
     ],
     tags: ['горы', 'приключения', 'культура', 'фотография'],
     difficulty: 'hard',
@@ -87,8 +87,8 @@ export const mockTours: Tour[] = [
     currentParticipants: 8,
     organizer: mockUsers[0],
     images: [
-      'https://images.pexels.com/photos/1535162/pexels-photo-1535162.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+      'https://images.pexels.com/photos/1535162/pexels-photo-1535162.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=800'
     ],
     tags: ['зима', 'лед', 'байкал', 'фотография'],
     difficulty: 'medium',
